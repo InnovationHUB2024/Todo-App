@@ -1,0 +1,11 @@
+<!-- templates/core/note_form.html -->
+{% extends 'core/base.html' %} {% load crispy_forms_tags %} {% block content %}
+<div class="mt-4">
+  <h2>{% if form.instance.pk %}Edit Note{% else %}Add Note{% endif %}</h2>
+  <form method="post">
+    {% csrf_token %} {{ form|crispy }}
+    <button type="submit" class="btn btn-success">Save</button>
+    <a href="{% url 'note_list' %}" class="btn btn-secondary">Cancel</a>
+  </form>
+</div>
+{% endblock %}

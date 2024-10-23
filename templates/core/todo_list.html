@@ -1,0 +1,38 @@
+<!-- templates/core/todo_list.html -->
+{% extends 'core/base.html' %} {% block content %}
+<div class="d-flex justify-content-between align-items-center mt-4">
+  <h2>My Todos</h2>
+  <a href="{% url 'todo_create' %}" class="btn btn-primary">Add Todo</a>
+</div>
+<table class="table table-striped mt-3">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Completed</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for todo in todos %}
+    <tr>
+      <td>{{ todo.title }}</td>
+      <td>{{ todo.description }}</td>
+      <td>{{ todo.completed }}</td>
+      <td>
+        <a href="{% url 'todo_update' todo.pk %}" class="btn btn-sm btn-warning"
+          >Edit</a
+        >
+        <a href="{% url 'todo_delete' todo.pk %}" class="btn btn-sm btn-danger"
+          >Delete</a
+        >
+      </td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="4">No todos available.</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
