@@ -29,12 +29,13 @@ def signup(request):
                 user = form.save(commit=False)
                 user.is_active = False  # Deactivate account till it is confirmed
                 user.save()
+                domain = request.get_host()
                 
                 # Send activation email
                 mail_subject = 'Activate your account.'
                 message = render_to_string('core/acc_active_email.html', {
                     'user': user,
-                    'domain': settings.APP_URL,
+                    'domain': domain,
                     'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                     'token': account_activation_token.make_token(user),
                 })
