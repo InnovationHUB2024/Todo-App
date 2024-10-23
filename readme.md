@@ -41,6 +41,9 @@ A simple Django-based ToDo application that allows users to create, edit, and de
 python -m venv venv
 
 source venv/bin/activate # On Linux
+```
+
+```bash
 
 venv\Scripts\activate # On Windows
 ```
@@ -54,6 +57,9 @@ Create .env file in the project folder
 
 ```bash
 touch .env #on linux
+```
+
+```bash
 
 copy nul .env #on windows
 ```
