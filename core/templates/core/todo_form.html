@@ -4,8 +4,10 @@
   <h2>{% if form.instance.pk %}Edit Todo{% else %}Add Todo{% endif %}</h2>
   <form method="post">
     {% csrf_token %} {{ form.as_p }}
-    <button type="submit" class="btn btn-success">Save</button>
-    <a href="{% url 'todo_list' %}" class="btn btn-secondary">Cancel</a>
+    <div class="d-flex">
+      <button type="submit" class="btn btn-success me-3 me-lg-5">Save</button>
+      <a href="{% url 'todo_list' %}" class="btn btn-secondary">Cancel</a>
+    </div>
   </form>
 </div>
 {% endblock %}
