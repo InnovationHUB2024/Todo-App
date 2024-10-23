@@ -1,0 +1,11 @@
+<!-- core/templates/core/signup.html -->
+{% extends 'core/base.html' %} {% load crispy_forms_tags %} {% block content %}
+<div class="container mt-5">
+  <h2>Sign Up</h2>
+  <form method="post">
+    {% csrf_token %} {{ form.as_p }}
+    <!-- Render the form fields manually -->
+    <button type="submit" class="btn btn-primary mt-3">Sign Up</button>
+  </form>
+</div>
+{% endblock %}

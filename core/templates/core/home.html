@@ -1,0 +1,15 @@
+<!-- templates/core/home.html -->
+{% extends 'core/base.html' %} {% block content %}
+<div class="jumbotron mt-4">
+  <h1 class="display-4">Welcome to TodoNote App!</h1>
+  <p class="lead">Manage your todos and notes efficiently.</p>
+  <hr class="my-4" />
+  <p>Choose an option below to get started.</p>
+  <a class="btn btn-primary btn-lg" href="{% url 'todo_list' %}" role="button"
+    >My Todos</a
+  >
+  <a class="btn btn-secondary btn-lg" href="{% url 'note_list' %}" role="button"
+    >My Notes</a
+  >
+</div>
+{% endblock %}
