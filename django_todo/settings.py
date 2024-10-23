@@ -20,6 +20,10 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS').split(',')
 
 APP_URL = config('APP_URL')
 
+CSRF_TRUSTED_ORIGINS = [
+    f'https://{host}' if not host.startswith('http') else host
+    for host in ALLOWED_HOSTS if host
+]
 
 SITE_ID = 1 
 # Email configurations
