@@ -39,6 +39,9 @@ A simple Django-based ToDo application that allows users to create, edit, and de
 
 ```bash
 python -m venv venv
+```
+
+```bash
 
 source venv/bin/activate # On Linux
 ```
