@@ -16,6 +16,10 @@ class TodoForm(forms.ModelForm):
     class Meta:
         model = Todo
         fields = ['title', 'description', 'completed']
+    def __init__(self, *args, **kwargs):
+        super(TodoForm, self).__init__(*args, **kwargs)
+        # Add a CSS class to the 'completed' field to hide it
+        self.fields['completed'].widget.attrs.update({'class': 'd-none'})
 
 class NoteForm(forms.ModelForm):
     class Meta:

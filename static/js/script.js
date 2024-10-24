@@ -1,3 +1,34 @@
+function ToastIt(text, status = "success", duration = 3000) {
+  let color = "";
+  let text_color = "";
+  if (status == "success") {
+    color = "#28A745";
+  } else if (status == "error") {
+    color = "#FF4C4C";
+  } else if (status == "warning") {
+    color = "#FFC107";
+    text_color = "#000";
+  } else {
+    color = "blue";
+  }
+  console.log(color);
+
+  Toastify({
+    text: text,
+    duration: duration,
+    newWindow: true,
+    close: true,
+    gravity: "top",
+    position: "right",
+    stopOnFocus: true,
+    style: {
+      background: color,
+      color: text_color,
+    },
+    onClick: function () {}, // Callback after click
+  }).showToast();
+}
+
 function getCSRFToken() {
   let cookieValue = null;
   if (document.cookie && document.cookie !== "") {
@@ -38,3 +69,39 @@ if (logout_anchor) {
       });
   });
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".completed-checkbox").forEach((checkbox) => {
+    console.log(checkbox);
+
+    checkbox.addEventListener("change", function () {
+      const todoId = this.getAttribute("data-id");
+      const completed = this.checked;
+
+      // Use Fetch API to send the update request
+      fetch(`/todos/${todoId}/update/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-CSRFToken": getCSRFToken(),
+        },
+        body: JSON.stringify({ completed }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {
+            console.log("Todo updated successfully");
+            if (completed) {
+              ToastIt("Todo marked as done.", "success");
+            } else {
+              ToastIt("Todo marked as undone.", "warning");
+            }
+          } else {
+            this.checked = !completed;
+            console.error("Failed to update todo");
+          }
+        })
+        .catch((error) => console.error("Error:", error));
+    });
+  });
+});

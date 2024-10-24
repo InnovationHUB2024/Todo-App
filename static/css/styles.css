@@ -33,7 +33,6 @@ form textarea {
   transition: border-color 0.2s ease-in-out;
 }
 
-/* Focus State for Inputs */
 form input[type="text"]:focus,
 form input[type="email"]:focus,
 form input[type="password"]:focus,
@@ -44,7 +43,6 @@ form textarea:focus {
   outline: none;
 }
 
-/* Button Styling */
 form button[type="submit"] {
   display: block;
   width: 100%;
@@ -62,7 +60,6 @@ form button[type="submit"]:hover {
   background-color: #0056b3;
 }
 
-/* Help Text */
 form .helptext {
   font-size: 0.85rem;
   color: #6c757d;
@@ -70,7 +67,6 @@ form .helptext {
   margin-bottom: 15px;
 }
 
-/* Error Messages */
 .form-group .errorlist {
   color: #dc3545;
   font-size: 0.9rem;
@@ -78,7 +74,6 @@ form .helptext {
   margin-bottom: 10px;
 }
 
-/* Checkbox and Radio Button Styling */
 form .form-check {
   margin-bottom: 15px;
 }
@@ -93,19 +88,16 @@ form .form-check-label {
   color: #495057;
 }
 
-/* Form Headers */
 form h2 {
   text-align: center;
   color: #343a40;
   margin-bottom: 20px;
 }
 
-/* Additional Margins for Submit Button */
 form button[type="submit"].mt-3 {
   margin-top: 20px;
 }
 
-/* Styling Select Fields */
 form select {
   appearance: none;
   background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="5" viewBox="0 0 4 5"><path fill="%23333" d="M2 0L0 2h4L2 0zM2 5L0 3h4l-2 2z"/></svg>');
@@ -114,19 +106,20 @@ form select {
   background-size: 8px 10px;
 }
 
-/* Textarea Styling */
 form textarea {
   resize: vertical;
   min-height: 100px;
 }
 
-/* Optional Field Styling */
 form .optional-field {
   color: #6c757d;
   font-size: 0.85rem;
 }
 
-/* Add some padding to forms inside modals */
 .modal-body form {
   padding: 15px;
+}
+
+label[for="id_completed"] {
+  display: none;
 }

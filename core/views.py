@@ -17,7 +17,7 @@ from .forms import SignUpForm, TodoForm, NoteForm
 from django.contrib.auth.views import LogoutView, LoginView
 from django.http import JsonResponse
 from django.conf import settings
-
+import json
 
     
 def signup(request):
@@ -101,13 +101,27 @@ def todo_create(request):
 @login_required
 def todo_update(request, pk):
     todo = get_object_or_404(Todo, pk=pk, user=request.user)
-    if request.method == 'POST':
-        form = TodoForm(request.POST, instance=todo)
-        if form.is_valid():
-            form.save()
-            return redirect('todo_list')
-    else:
-        form = TodoForm(instance=todo)
+    
+    if request.method == 'POST' and request.content_type == 'application/json':
+        try:
+            data = json.loads(request.body)
+            completed = data.get('completed', False)
+
+            todo.completed = completed
+            todo.save()
+
+            # Return a JSON response
+            return JsonResponse({'success': True, 'message': 'Todo updated successfully'})
+        except json.JSONDecodeError as e:
+            print(f"Error decoding JSON: {e}")
+            return JsonResponse({'success': False, 'message': 'Invalid JSON payload'}, status=400)
+
+    # Handle non-JSON form submissions
+    form = TodoForm(request.POST or None, instance=todo)
+    if form.is_valid():
+        form.save()
+        return redirect('todo_list')
+
     return render(request, 'core/todo_form.html', {'form': form})
 
 @login_required
