@@ -4,6 +4,7 @@
   <form method="post">
     {% csrf_token %} {{ form.as_p }}
     <!-- Render the form fields manually -->
+    <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
     <button type="submit" class="btn btn-primary mt-3">Sign Up</button>
   </form>
 </div>
