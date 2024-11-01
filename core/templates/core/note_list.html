@@ -1,7 +1,9 @@
 {% extends 'core/base.html' %} {% block content %}
+
+
 <div class="d-flex justify-content-between align-items-center mt-4">
   <h2>My Notes</h2>
-  <a href="{% url 'note_create' %}" class="btn btn-primary">Add Note</a>
+  <a href="{% url 'note_create' %}" class="btn btn-primary" style="background-color= orangered;">Add Note</a>
 </div>
 <table class="table table-striped mt-3">
   <thead>
@@ -17,10 +19,10 @@
       <td>{{ note.title }}</td>
       <td>{{ note.content|truncatechars:50 }}</td>
       <td>
-        <a href="{% url 'note_update' note.pk %}" class="btn btn-sm btn-warning"
+        <a href="{% url 'note_update' note.pk %}" class="btn btn-sm btn-warning" style="background-color= yellowgreen;"
           >Edit</a
         >
-        <a href="{% url 'note_delete' note.pk %}" class="btn btn-sm btn-danger"
+        <a href="{% url 'note_delete' note.pk %}" class="btn btn-sm btn-danger" style="background-color= red;"
           >Delete</a
         >
       </td>

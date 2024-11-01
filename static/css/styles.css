@@ -123,16 +123,3 @@ form .optional-field {
 label[for="id_completed"] {
   display: t;
 }
-
-/* Note button colors */
-.btn.btn-primary{
-  color: #ffa500;
-}
-
-.btn.btn-sm.btn-warning{
-  color: #9acd32;
-}
-
-.btn.btn-sm.btn-danger{
-  color: #dc3545;
-}
