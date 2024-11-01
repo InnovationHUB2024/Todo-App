@@ -118,21 +118,8 @@ form .optional-field {
 
 .modal-body form {
   padding: 15px;
-}on
+}
 
 label[for="id_completed"] {
-  display: t;
-}
-
-/* Note button colors */
-.btn.btn-primary{
-  color: #ffa500;
-}
-
-.btn.btn-sm.btn-warning{
-  color: #9acd32;
-}
-
-.btn.btn-sm.btn-danger{
-  color: #dc3545;
+  display: none;
 }
