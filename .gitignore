@@ -2,3 +2,6 @@
 db.sqlite3
 __pycache__/
 django_todo/__pycache__/
+__pycache__/
+venv/
+*.pyc
