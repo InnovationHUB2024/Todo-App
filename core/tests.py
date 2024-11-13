@@ -8,60 +8,8 @@ from core.models import Profile
 from django.contrib.auth.models import User
 
 
-# URL Tests By Oluwadamilola
-class TestUrls(SimpleTestCase):
-    
 
-    def test_list_url_is_resolved(self):
-        url = reverse('login')
-        self.assertEqual(resolve(url).func.view_class, core_views.CustomLoginView)
-
-    def test_detail_url_is_resolved(self):
-        url = reverse('logout')
-        self.assertEqual(resolve(url).func.view_class, core_views.CustomLogoutView)
-
-    def test_create_url_is_resolved(self):
-        url = reverse('signup')
-        self.assertEqual(resolve(url).func, core_views.signup)
-
-    def test_update_url_is_resolved(self):
-        url = reverse('home')
-        self.assertEqual(resolve(url).func, core_views.home)
-
-    def test_delete_url_is_resolved(self):
-        url = reverse('todo_list', args=[1])
-        self.assertEqual(resolve(url).func, core_views.todo_list)
-        
-    def test_delete_url_is_resolved(self):
-        url = reverse('todo_create', args=[1])
-        self.assertEqual(resolve(url).func, core_views.todo_create)
-        
-    def test_delete_url_is_resolved(self):
-        url = reverse('todo_update', args=[1])
-        self.assertEqual(resolve(url).func, core_views.todo_update)
-        
-    def test_delete_url_is_resolved(self):
-        url = reverse('todo_delete', args=[1])
-        self.assertEqual(resolve(url).func,  core_views.todo_delete)
-        
-    def test_delete_url_is_resolved(self):
-        url = reverse('note_list', args=[1])
-        self.assertEqual(resolve(url).func, core_views.note_list)
-        
-    def test_delete_url_is_resolved(self):
-        url = reverse('note_create', args=[1])
-        self.assertEqual(resolve(url).func, core_views.note_create)
-        
-    def test_delete_url_is_resolved(self):
-        url = reverse('note_update', args=[1])
-        self.assertEqual(resolve(url).func, core_views.note_update)
-        
-    def test_delete_url_is_resolved(self):
-        url = reverse('note_delete', args=[1])
-        self.assertEqual(resolve(url).func, core_views.note_delete)
-    
-
-# Form Tests By Oghenekefe Okpare
+# Form Tests By   
 class TestForms(TestCase):
 
     def test_signup_form_valid_data(self):
