@@ -3,10 +3,12 @@ from django.test import TestCase
 from django.urls import reverse, resolve
 from core import views as core_views
 from core.forms import SignUpForm ,TodoForm, NoteForm
-from core.models import models
+from core.models import Todo, Note
+from django.contrib.auth.models import User
 
 # URL Tests By Oluwadamilola
 class TestUrls(SimpleTestCase):
+    
 
     def test_list_url_is_resolved(self):
         url = reverse('login')
@@ -55,45 +57,47 @@ class TestUrls(SimpleTestCase):
     def test_delete_url_is_resolved(self):
         url = reverse('note_delete', args=[1])
         self.assertEqual(resolve(url).func, core_views.note_delete)
-        
- # Form by 
-# #class TestForms(TestCase):
+    
 
-#   def test_signup_form_valid_data(self):
-#     form = SignUpForm (data={
-#               'username': 'testuser',
-#               'email': 'test@example.com',
-#               'password1': 'complexpassword123',
-#               'password2': 'complexpassword123',
-#         })
-#     self.assertTrue(form.is_valid())
+# Form Tests By Oghenekefe Okpare
+class TestForms(TestCase):
 
-#   def test_signup_form_no_data(self):
-#           form = SignUpForm(data={})
-#           self.assertFalse(form.is_valid())
-#           self.assertEqual(len(form.errors), 4)  # Assuming there are 4 required fields
+    def test_signup_form_valid_data(self):
+        form = SignUpForm(data={
+            'username': 'testuser',
+            'email': 'test@example.com',
+            'password1': 'complexpassword123',
+            'password2': 'complexpassword123',
+        })
+        self.assertTrue(form.is_valid())
 
-#   def test_todo_form_valid_data(self):
-#           form = TodoForm(data={
-#               'title': 'Test Todo',
-#               'description': 'Test Description',
-#               'completed': False,
-#           })
-#           self.assertTrue(form.is_valid())
+    def test_signup_form_no_data(self):
+        form = SignUpForm(data={})
+        self.assertFalse(form.is_valid())
+        self.assertEqual(len(form.errors), 4)  # Adjust the number of required fields if necessary
 
-#   def test_todo_form_no_data(self):
-#           form = TodoForm(data={})
-#           self.assertFalse(form.is_valid())
-#           self.assertEqual(len(form.errors), 2)  # Assuming there are 2 required fields
+    def test_todo_form_valid_data(self):
+        form = TodoForm(data={
+            'title': 'Test Todo',
+            'description': 'Test Description',
+            'completed': False,
+        })
+        self.assertTrue(form.is_valid())
 
-#   def test_note_form_valid_data(self):
-#       form = NoteForm(data={
-#               'title': 'Test Note',
-#                 'content': 'Test Content',
-#        })
-#       self.assertTrue(form.is_valid())
+    def test_todo_form_no_data(self):
+        form = TodoForm(data={})
+        self.assertFalse(form.is_valid())
+        print(form.errors)  # Print the errors to see which fields are causing issues
+        self.assertEqual(len(form.errors), 1)  # Adjust the number of required fields if necessary
 
-#   def test_note_form_no_data(self):
-#           form = NoteForm(data={})
-#           self.assertFalse(form.is_valid())
-#           self.assertEqual(len(form.errors), 2)  # Assuming there are 2 required fields
+    def test_note_form_valid_data(self):
+        form = NoteForm(data={
+            'title': 'Test Note',
+            'content': 'Test Content',
+        })
+        self.assertTrue(form.is_valid())
+
+    def test_note_form_no_data(self):
+        form = NoteForm(data={})
+        self.assertFalse(form.is_valid())
+        self.assertEqual(len(form.errors), 2)  # Adjust the number of required fields if necessary
