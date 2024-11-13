@@ -35,4 +35,10 @@ class Note(models.Model):
 
     def __str__(self):
         return self.title
-
+#     Oghenekefe Okpare
+class ProfileModelTests(TestCase):
+    def test_profile_creation_on_user_creation(self):
+        user = User.objects.create(username='testuser')
+        profile = Profile.objects.get(user=user)
+        self.assertIsNotNone(profile)
+        self.assertEqual(profile.user, user)
