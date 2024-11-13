@@ -5,6 +5,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     is_verified = models.BooleanField(default=False)
@@ -35,10 +36,4 @@ class Note(models.Model):
 
     def __str__(self):
         return self.title
-#     Oghenekefe Okpare
-class ProfileModelTests(TestCase):
-    def test_profile_creation_on_user_creation(self):
-        user = User.objects.create(username='testuser')
-        profile = Profile.objects.get(user=user)
-        self.assertIsNotNone(profile)
-        self.assertEqual(profile.user, user)
+

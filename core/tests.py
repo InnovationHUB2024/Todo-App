@@ -4,7 +4,9 @@ from django.urls import reverse, resolve
 from core import views as core_views
 from core.forms import SignUpForm ,TodoForm, NoteForm
 from core.models import Todo, Note
+from core.models import Profile
 from django.contrib.auth.models import User
+
 
 # URL Tests By Oluwadamilola
 class TestUrls(SimpleTestCase):
@@ -101,3 +103,40 @@ class TestForms(TestCase):
         form = NoteForm(data={})
         self.assertFalse(form.is_valid())
         self.assertEqual(len(form.errors), 2)  # Adjust the number of required fields if necessary
+
+
+#     Oghenekefe Okpare
+class ProfileModelTests(TestCase):
+    def test_profile_creation_on_user_creation(self):
+        user = User.objects.create(username='testuser')
+        profile = Profile.objects.get(user=user)
+        self.assertIsNotNone(profile)
+        self.assertEqual(profile.user, user)
+
+    def test_profile_str(self):
+        user = User.objects.create(username="testuser")
+        profile = Profile.objects.get(user=user)
+        self.assertEqual(str(profile), "testuser's profile")
+
+    def test_todo_creation(self):
+        user = User.objects.create(username="testuser")
+        todo = Todo.objects.create(user=user, title="Test Todo", description="A test todo item")
+        self.assertEqual(todo.title, "Test Todo")
+        self.assertEqual(todo.user, user)
+        self.assertFalse(todo.completed)  # Should be False by default
+
+    def test_todo_str(self):
+        user = User.objects.create(username="testuser")
+        todo = Todo.objects.create(user=user, title="Test Todo")
+        self.assertEqual(str(todo), "Test Todo")
+
+    def test_note_creation(self):
+        user = User.objects.create(username="testuser")
+        note = Note.objects.create(user=user, title="Test Note", content="A test note content")
+        self.assertEqual(note.title, "Test Note")
+        self.assertEqual(note.user, user)
+
+    def test_note_str(self):
+        user = User.objects.create(username="testuser")
+        note = Note.objects.create(user=user, title="Test Note")
+        self.assertEqual(str(note), "Test Note")
