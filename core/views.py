@@ -18,7 +18,10 @@ from django.contrib.auth.views import LogoutView, LoginView
 from django.http import JsonResponse
 from django.conf import settings
 import json
+from django.shortcuts import render
 
+def custom_404_view(request, exception):
+    return render(request, '404.html', status=404)
     
 def signup(request):
     if request.method == 'POST':
