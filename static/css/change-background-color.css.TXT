@@ -1,0 +1,129 @@
+/* General Form Styles */
+body {
+    background-color: black;
+}
+
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Labels */
+form label {
+  display: block;
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 5px;
+}
+
+/* Input Fields */
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form select,
+form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: #ffffff;
+  transition: border-color 0.2s ease-in-out;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form input[type="password"]:focus,
+form select:focus,
+form textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+  outline: none;
+}
+
+form button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #ffffff;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+form button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+form .helptext {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-top: -10px;
+  margin-bottom: 15px;
+}
+
+.form-group .errorlist {
+  color: #dc3545;
+  font-size: 0.9rem;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+form .form-check {
+  margin-bottom: 15px;
+}
+
+form .form-check input[type="checkbox"],
+form .form-check input[type="radio"] {
+  margin-right: 10px;
+}
+
+form .form-check-label {
+  font-size: 0.95rem;
+  color: #495057;
+}
+
+form h2 {
+  text-align: center;
+  color: #343a40;
+  margin-bottom: 20px;
+}
+
+form button[type="submit"].mt-3 {
+  margin-top: 20px;
+}
+
+form select {
+  appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="5" viewBox="0 0 4 5"><path fill="%23333" d="M2 0L0 2h4L2 0zM2 5L0 3h4l-2 2z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 8px 10px;
+}
+
+form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+form .optional-field {
+  color: #6c757d;
+  font-size: 0.85rem;
+}
+
+.modal-body form {
+  padding: 15px;
+}
+
+label[for="id_completed"] {
+  display: none;
+}
